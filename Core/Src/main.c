@@ -118,6 +118,8 @@ int main(void)
     TM1723_POWER_ON();
 	LCD_BACK_LIGHT_ON()	;
 	Display_Name_AI();
+	Display_Name_Wifi();
+	Display_Icon_Line();
 
 	// Single_RunMode();
       // Single_RunCmd();

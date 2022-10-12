@@ -203,15 +203,9 @@ void Display_Name_Wifi(void)
 	// TIM1723_Write_Cmd(0x40);
 	 TIM1723_Write_Cmd(0x44);
 
+     TM1723_Write_Display_Data(0xC5,0x01);
 
-	
-	TM1723_Write_Display_Data(0xC2,0x00);
-	TM1723_Write_Display_Data(0xC3,0xff);
-	
-	
-    
-
-	 //open display
+	//open display
 	 TIM1723_Write_Cmd(OpenDispTM1723);
 }
 /*************************************************************************
@@ -224,27 +218,15 @@ void Display_Name_Wifi(void)
 *************************************************************************/ 
 void Display_Icon_Line(void)
 {
+	TIM1723_Write_Cmd(0x00);
+	// TIM1723_Write_Cmd(0x40);
+	 TIM1723_Write_Cmd(0x44);
 
-	 TM1723_STB_SetLow();
-	 TM1723_Write_OneByte(0X40);//To Address of fixed reg 0x44
-	 TM1723_STB_SetHigh();
-    
-     TM1723_STB_SetLow();
-     TM1723_Write_OneByte(0X44);//To Address of fixed reg 0x44
-     TM1723_STB_SetHigh();
+     TM1723_Write_Display_Data(0xC2,0x01);
 
-	//display "line"
-	 TM1723_STB_SetLow();
-     TM1723_Write_OneByte(0x09);//SEG18
-    
-     TM1723_Write_OneByte(0x01);
-
-     TM1723_STB_SetHigh();
-
-	 //open display
-	 TM1723_Start();
-	 TM1723_Write_OneByte(OpenDispTM1723);
-     TM1723_Stop();
+	//open display
+	 TIM1723_Write_Cmd(OpenDispTM1723);
+	
 
 }
 /*************************************************************************
