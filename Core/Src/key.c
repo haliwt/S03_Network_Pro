@@ -167,7 +167,7 @@ void SplitDispose_Key(uint8_t value)
 		            run_t.gPower_On=0;
 					run_t.fan_off_60s =0;
 		           //  run_t.wifi_turn_on++;
-		             Smg_AllOff();
+		          //   Smg_AllOff();
               }
         //  }
          

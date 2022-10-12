@@ -24,7 +24,7 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-#include "smg.h"
+//#include "smg.h"
 #include "cmd_link.h"
 #include "run.h"
 #include "key.h"

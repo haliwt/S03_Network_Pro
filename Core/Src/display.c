@@ -28,7 +28,7 @@ void DisplaySMG_LED(void)
 
 
 
-		TM1639_Write_4Bit_Data(m,n,p,q,0) ; //timer is default 12 hours "12:00"
+		//TM1639_Write_4Bit_Data(m,n,p,q,0) ; //timer is default 12 hours "12:00"
 		panel_led_fun();//Display_Function_OnOff();
 		//KeyLed_Power_On();
 
@@ -64,8 +64,8 @@ void Display_DHT11_Value(void)
         temp1 = run_t.gReal_humtemp[1]/10 %10;  // temperature
         temp2 = run_t.gReal_humtemp[1]%10;
 
-       TM1639_Write_2bit_TempData(temp1,temp2);
-       TM1639_Write_2bit_HumData(hum1,hum2);
+      // TM1639_Write_2bit_TempData(temp1,temp2);
+      // TM1639_Write_2bit_HumData(hum1,hum2);
       break;
 
       case WIFI_INFO:
@@ -125,7 +125,7 @@ void Display_DHT11_Value(void)
 				   p = run_t. dispTime_minute /10 %10;
 				   q=  run_t. dispTime_minute %10;
 				}
-			    TM1639_Write_4Bit_Data(m,n,p,q,0) ; //timer is default 12 hours "12:00"
+			    //TM1639_Write_4Bit_Data(m,n,p,q,0) ; //timer is default 12 hours "12:00"
            
         } 
 
@@ -149,7 +149,7 @@ void Display_DHT11_Value(void)
 		   	      temp1 = run_t.gTemperature/10 %10;
 	              temp2 = run_t.gTemperature%10;
 					    
-				   TM1639_Write_4Bit_TemperatureData(temp1,temp2); //WT.EDIT 2022.09.01
+				 //  TM1639_Write_4Bit_TemperatureData(temp1,temp2); //WT.EDIT 2022.09.01
                     
          }
       break;
@@ -190,7 +190,7 @@ void DisplayTiming_KEY_Add_Subtract_Fun(void)
 			m = run_t.dispTime_hours /10%10;
 			n=	run_t.dispTime_hours %10;
 		
-	       TM1639_Write_4Bit_Data(0,0,m,n,1) ; // timer   mode  "H0: xx"
+	      // TM1639_Write_4Bit_Data(0,0,m,n,1) ; // timer   mode  "H0: xx"
 		
 	 }
 	
@@ -209,7 +209,7 @@ void DisplayTiming_KEY_Add_Subtract_Fun(void)
 				   p = run_t. dispTime_minute /10 %10;
 				   q=  run_t. dispTime_minute %10;
 				}
-			    TM1639_Write_4Bit_Data(m,n,p,q,0) ; //timer is default 12 hours "12:00"
+			  //  TM1639_Write_4Bit_Data(m,n,p,q,0) ; //timer is default 12 hours "12:00"
 
 	}
 	else{
@@ -221,7 +221,7 @@ void DisplayTiming_KEY_Add_Subtract_Fun(void)
 					    n=	run_t.gTimes_hours_temp%10; 
 						p = run_t.gTimes_minutes_temp /10 %10;
 						q=  run_t.gTimes_minutes_temp %10;
-						TM1639_Write_4Bit_Data(m,n,p,q,0) ; //timer is default 12 hours "12:00"
+						//TM1639_Write_4Bit_Data(m,n,p,q,0) ; //timer is default 12 hours "12:00"
 				
 	}
     else if(run_t.Timer_mode_flag !=1 ||  run_t.temperature_set_flag  ==1){ //Temperature of setup auto shut off machine
@@ -229,7 +229,7 @@ void DisplayTiming_KEY_Add_Subtract_Fun(void)
 						temp1 = run_t.gTemperature/10 %10;
 	                     temp2 = run_t.gTemperature%10;
 					    
-					TM1639_Write_4Bit_TemperatureData(temp1,temp2); //WT.EDIT 2022.09.01
+				//	TM1639_Write_4Bit_TemperatureData(temp1,temp2); //WT.EDIT 2022.09.01
                     run_t.temperature_flag =0;
 	 }
     }  
@@ -243,7 +243,7 @@ void Display_GMT(void)
 	n=	run_t.gTimes_hours_temp%10; 
 	p = run_t.gTimes_minutes_temp /10 %10;
 	q=  run_t.gTimes_minutes_temp %10;
-	TM1639_Write_4Bit_Data(m,n,p,q,0) ; //timer is default 12 hours "12:00"
+	//TM1639_Write_4Bit_Data(m,n,p,q,0) ; //timer is default 12 hours "12:00"
 
 
 }

@@ -60,7 +60,7 @@ void Wifi_Receive_Cmd(uint8_t cmd)
 			    run_t.gFan_RunContinue=1;
 	            run_t.gPower_On=0;
 				run_t.fan_off_60s =0;
-	             Smg_AllOff();
+	           //  Smg_AllOff();
 
 					run_t.gFan_RunContinue=1; //WT.EDIT 2022.08.31
 					run_t.fan_off_60s = 0;
@@ -154,7 +154,7 @@ void Power_Off(void)
     	 if(run_t.gPower_On ==0){
 
 			     run_t.gPower_On =0xff;
-			 	  Smg_AllOff();
+			 	 // Smg_AllOff();
 				
 		         run_t.gAi =0;
 				
@@ -216,7 +216,7 @@ void DisplayTimer_Timing(void)
 			    n=	run_t. dispTime_hours %10; 
 				p = run_t. dispTime_minute /10;
 				q=  run_t. dispTime_minute %10;
-			    TM1639_Write_4Bit_Data(m,n,p,q,0) ; //timer is default 12 hours "12:00"
+			   // TM1639_Write_4Bit_Data(m,n,p,q,0) ; //timer is default 12 hours "12:00"
 
   }
 }
