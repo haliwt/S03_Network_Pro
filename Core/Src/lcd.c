@@ -239,26 +239,14 @@ void Display_Icon_Line(void)
 *************************************************************************/ 
 void Display_Name_Dry(void)
 {
-	 TM1723_STB_SetLow();
-	 TM1723_Write_OneByte(0X40);//To Address of fixed reg 0x44
-	 TM1723_STB_SetHigh();
-    
-     TM1723_STB_SetLow();
-     TM1723_Write_OneByte(0X44);//To Address of fixed reg 0x44
-     TM1723_STB_SetHigh();
+     TIM1723_Write_Cmd(0x00);
+	// TIM1723_Write_Cmd(0x40);
+	 TIM1723_Write_Cmd(0x44);
 
-	//display "line"
-	 TM1723_STB_SetLow();
-     TM1723_Write_OneByte(0x0A);//SEG20
-    
-     TM1723_Write_OneByte(0x01);
+     TM1723_Write_Display_Data(0xC2,0x03);
 
-     TM1723_STB_SetHigh();
-
-	 //open display
-	 TM1723_Start();
-	 TM1723_Write_OneByte(OpenDispTM1723);
-     TM1723_Stop();
+	//open display
+	 TIM1723_Write_Cmd(OpenDispTM1723);
 
 
 }

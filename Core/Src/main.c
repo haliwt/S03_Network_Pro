@@ -120,6 +120,7 @@ int main(void)
 	Display_Name_AI();
 	Display_Name_Wifi();
 	Display_Icon_Line();
+	Display_Name_Dry();
 
 	// Single_RunMode();
       // Single_RunCmd();
