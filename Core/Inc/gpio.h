@@ -56,10 +56,10 @@ void MX_GPIO_Init(void);
 #define TM1723_STB_Pin 						GPIO_PIN_4
 #define TM1723_STB_GPIO_Port 				GPIOA
 
-#define TM1723_DIO_Pin 						GPIO_PIN_5
+#define TM1723_DIO_Pin 						GPIO_PIN_6
 #define TM1723_DIO_GPIO_Port 				GPIOA
 
-#define TM1723_SCLK_Pin 					GPIO_PIN_6
+#define TM1723_SCLK_Pin 					GPIO_PIN_5
 #define TM1723_SCLK_GPIO_Port 				GPIOA
 
 

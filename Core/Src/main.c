@@ -31,6 +31,7 @@
 #include "led.h"
 #include "single_mode.h"
 #include "display.h"
+#include "lcd.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -114,8 +115,12 @@ int main(void)
 
     /* USER CODE BEGIN 3 */
 	  
-       Single_RunMode();
-       Single_RunCmd();
+    TM1723_POWER_ON();
+	LCD_BACK_LIGHT_ON()	;
+	Display_Name_AI();
+
+	// Single_RunMode();
+      // Single_RunCmd();
 	 
   }
   /* USER CODE END 3 */
