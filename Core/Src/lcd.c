@@ -173,13 +173,13 @@ static void TM1723_Write_Display_Data(uint8_t addr,uint8_t dat)
 void Display_Name_AI(void)
 {
 	 TIM1723_Write_Cmd(0x00);
-	 TIM1723_Write_Cmd(0x40);
+	// TIM1723_Write_Cmd(0x40);
 	 TIM1723_Write_Cmd(0x44);
 
 
 	
-	TM1723_Write_Display_Data(0xC2,0x00);
-	TM1723_Write_Display_Data(0xC3,0xff);
+	//TM1723_Write_Display_Data(0xC2,0x00);
+	TM1723_Write_Display_Data(0xC3,0x01);
 	
 	
     
@@ -199,30 +199,20 @@ void Display_Name_AI(void)
 *************************************************************************/ 
 void Display_Name_Wifi(void)
 {
-    TM1723_STB_SetLow();
-	 TM1723_Write_OneByte(0X40);//To Address of fixed reg 0x40
-	 TM1723_STB_SetHigh();
+    TIM1723_Write_Cmd(0x00);
+	// TIM1723_Write_Cmd(0x40);
+	 TIM1723_Write_Cmd(0x44);
+
+
+	
+	TM1723_Write_Display_Data(0xC2,0x00);
+	TM1723_Write_Display_Data(0xC3,0xff);
+	
+	
     
-     TM1723_STB_SetLow();
-     TM1723_Write_OneByte(0X44);//To Address of fixed reg 0x44
-     TM1723_STB_SetHigh();
-
-	//display "WIFI"
-	 TM1723_STB_SetLow();
-     TM1723_Write_OneByte(0x05);//SEG10
-      TM1723_STB_SetHigh();
-
-	 TM1723_STB_SetLow();
-     TM1723_Write_OneByte(0x01);//display "WIFI"
-
-     
-     TM1723_STB_SetHigh();
 
 	 //open display
-	 TM1723_Start();
-	 TM1723_Write_OneByte(OpenDispTM1723);
-     TM1723_Stop();
-
+	 TIM1723_Write_Cmd(OpenDispTM1723);
 }
 /*************************************************************************
  	*
