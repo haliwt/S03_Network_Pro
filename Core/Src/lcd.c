@@ -76,7 +76,7 @@ static void Delay_us(uint8_t t)
   uint16_t j;
 	for(j=0;j<t;j++)
 	{
-       for(int i = 0; i <50; i++)//better for(int i = 0; i < 40; i++)    //for(int i = 0; i < 20; i++)    
+       for(int i = 0; i <4; i++)//better for(int i = 0; i < 40; i++)    //for(int i = 0; i < 20; i++)    
         {
             __asm("NOP");//等待1个指令周期，系统主频24M
            
@@ -222,7 +222,7 @@ void Display_Icon_Line(void)
 	// TIM1723_Write_Cmd(0x40);
 	 TIM1723_Write_Cmd(0x44);
 
-     TM1723_Write_Display_Data(0xC2,0x01);
+     TM1723_Write_Display_Data(0xC2,0x0F);
 
 	//open display
 	 TIM1723_Write_Cmd(OpenDispTM1723);
@@ -260,26 +260,14 @@ void Display_Name_Dry(void)
 *************************************************************************/ 
 void Display_Name_Kill(void)
 {
-	 TM1723_STB_SetLow();
-	 TM1723_Write_OneByte(0X40);//To Address of fixed reg 0x44
-	 TM1723_STB_SetHigh();
-    
-     TM1723_STB_SetLow();
-     TM1723_Write_OneByte(0X44);//To Address of fixed reg 0x44
-     TM1723_STB_SetHigh();
+	 TIM1723_Write_Cmd(0x00);
+	// TIM1723_Write_Cmd(0x40);
+	 TIM1723_Write_Cmd(0x44);
 
-	//display "line"
-	 TM1723_STB_SetLow();
-     TM1723_Write_OneByte(0x0C);//SEG24
-    
-     TM1723_Write_OneByte(0x01);
+     TM1723_Write_Display_Data(0xC2,0x0F);
 
-     TM1723_STB_SetHigh();
-
-	 //open display
-	 TM1723_Start();
-	 TM1723_Write_OneByte(OpenDispTM1723);
-     TM1723_Stop();
+	//open display
+	 TIM1723_Write_Cmd(OpenDispTM1723);
 
 }
 /*************************************************************************
@@ -292,26 +280,14 @@ void Display_Name_Kill(void)
 *************************************************************************/ 
 void Display_Name_ExpellingParasite(void)
 {
-     TM1723_STB_SetLow();
-	 TM1723_Write_OneByte(0X40);//To Address of fixed reg 0x44
-	 TM1723_STB_SetHigh();
-    
-     TM1723_STB_SetLow();
-     TM1723_Write_OneByte(0X44);//To Address of fixed reg 0x44
-     TM1723_STB_SetHigh();
+     TIM1723_Write_Cmd(0x00);
+	// TIM1723_Write_Cmd(0x40);
+	 TIM1723_Write_Cmd(0x44);
 
-	//display "line"
-	 TM1723_STB_SetLow();
-     TM1723_Write_OneByte(0x03);//SEG6
-    
-     TM1723_Write_OneByte(0x01);
+     TM1723_Write_Display_Data(0xC2,0x0F);
 
-     TM1723_STB_SetHigh();
-
-	 //open display
-	 TM1723_Start();
-	 TM1723_Write_OneByte(OpenDispTM1723);
-     TM1723_Stop();
+	//open display
+	 TIM1723_Write_Cmd(OpenDispTM1723);
 
 }
 

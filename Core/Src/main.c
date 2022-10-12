@@ -121,6 +121,8 @@ int main(void)
 	Display_Name_Wifi();
 	Display_Icon_Line();
 	Display_Name_Dry();
+	Display_Name_Kill();
+	Display_Name_ExpellingParasite();
 
 	// Single_RunMode();
       // Single_RunCmd();
