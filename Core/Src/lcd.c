@@ -24,18 +24,18 @@
 #define  COM3_H        0X80
 
 
-
+const uint8_t lcdNumber_Low[]={0x0A,0x0A,0x06,0x0E,0x0E,0x0C,0x0E,0x0A,0x0E,0x0E,0x00};
 
 
 const unsigned char segNumber_Low[]={
  
-         seg_b+seg_c,        		// char "0"  0x00
-		 seg_b+seg_c,                           // char "1"  0x01
-		 seg_b+seg_g,              		// char "2"  0x02
+         seg_b+seg_c,        		      // char "0"  0x00
+		 seg_b+seg_c,                      // char "1"  0x01
+		 seg_b+seg_g,              		  // char "2"  0x02
 		 seg_b+seg_g+seg_c,               // char "3"  0x03
-		 seg_b+seg_g+seg_c,                   	    // char "4"  0x04
+		 seg_b+seg_g+seg_c,               // char "4"  0x04
 		 seg_g+seg_c,              		// char "5"  0x05
-		 seg_a+seg_g+seg_c,              	    // char "6"  0x06
+		 seg_a+seg_g+seg_c,              // char "6"  0x06
 		 seg_b+seg_c,                    	// char "7"  0x07
 		 seg_b+seg_g+seg_c,  		        // char "8"  0x08
 		 seg_b+seg_g+seg_c,        		// char "9"  0x09
@@ -45,6 +45,7 @@ const unsigned char segNumber_Low[]={
 
 };
 
+const uint8_t  lcdNumber_High[]={0xF0,0,0xD0,0x90,0x20,0xB0,0xF0,0x10,0xF0,0xB0,0x0};
 const unsigned char segNumber_High[]={
          seg_a+seg_f+seg_e+seg_d,        // char "0"  0x00
 		 0,                				 // char "1"  0x01
@@ -67,22 +68,7 @@ static void TM1723_Stop(void);
 static void TM1723_Write_OneByte(uint8_t data);
 static void TIM1723_Write_Cmd(uint8_t cmd);
 static void TM1723_Write_Display_Data(uint8_t addr,uint8_t dat);
-
-//static void Delay_us(uint8_t t);
-
-
-//static void Delay_us(uint8_t t)
-//{
-//  uint16_t j;
-//	for(j=0;j<t;j++)
-//	{
-//       for(int i = 0; i <4; i++)//better for(int i = 0; i < 40; i++)    //for(int i = 0; i < 20; i++)    
-//        {
-//            __asm("NOP");//等待1个指令周期，系统主频24M
-//           
-//        }
-//	}
-//}
+static void TM1723_Write_Display_TwoData(uint8_t addr,uint8_t dat1,uint8_t dat2);
 
 
 /*****************************************************
@@ -153,7 +139,20 @@ static void TM1723_Write_Display_Data(uint8_t addr,uint8_t dat)
    TM1723_STB_SetHigh();
 
 }
+static void TM1723_Write_Display_TwoData(uint8_t addr,uint8_t dat1,uint8_t dat2)
+{
+  
+   TM1723_CLK_SetHigh();
+   TM1723_STB_SetLow();
+   TM1723_Write_OneByte(addr);
+  
+   TM1723_Write_OneByte(dat1);
+   TM1723_Write_OneByte(dat2);
+    
+   
+   TM1723_STB_SetHigh();
 
+}
 
 /*************************************************************************
  	*
@@ -296,8 +295,11 @@ void Display_Name_Temperature(void)
 	 TIM1723_Write_Cmd(0x40);
 	 TIM1723_Write_Cmd(0x44);
 
-     TM1723_Write_Display_Data(0xC2,0x80);//display digital "88"
-     TM1723_Write_Display_Data(0xC3,0x0);//display digital "88"
+    TM1723_Write_Display_Data(0xC2,lcdNumber_High[0]+0x0F);//display digital "88"
+
+    
+    TM1723_Write_Display_Data(0xC3,lcdNumber_Low[0]);//display digital "88"
+   
      
 	 TM1723_Write_Display_Data(0xC4,0x0);//display "t,c"
      TM1723_Write_Display_Data(0xC5,0x0);//display "t,c"
@@ -312,7 +314,7 @@ void Display_Name_Temperature(void)
      TM1723_Write_Display_Data(0xCF,0x0);//display "t,c"
 
 	//open display
-	 TIM1723_Write_Cmd(0x9c);
+	 TIM1723_Write_Cmd(0x9B);
 
 }
 /*************************************************************************
