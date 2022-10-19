@@ -118,7 +118,7 @@ int main(void)
     TM1723_POWER_ON();
 	LCD_BACK_LIGHT_ON()	;
 //	Display_Name_AI();
-//	Display_Name_Wifi();
+	Display_Name_Wifi();
 //	Display_Icon_Line();
 //    Display_Name_Dry();
 //	Display_Name_Kill();
