@@ -34,6 +34,7 @@
    
   
 #define OpenDispTM1723          0x97 // full screen is tunr on light
+#define OpenDispTM1723_5        0X9f
 #define TM1723Default          	0x87
 #define CloseDispTM1723		    0x80// 
 
@@ -67,13 +68,15 @@
 #define Addr0EH         0xCE//??0CH
 #define Addr0FH         0xCF//??0DH
 
-
+void Display_TurnOff(void);
 void Display_Name_AI(void);
 void Display_Name_Wifi(void);
 void Display_Icon_Line(void);
 void Display_Name_Dry(void);
 void Display_Name_Kill(void);
 void Display_Name_ExpellingParasite(void);
+void Display_Name_Temperature(void);
+void Display_Name_Humidity(void);
 
 
 #endif 
